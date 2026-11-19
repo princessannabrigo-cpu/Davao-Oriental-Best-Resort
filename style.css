@@ -1,0 +1,1444 @@
+
+/* =========================================================
+   DISCOVER DAVAO ORIENTAL – MAIN STYLESHEET
+   Updated Resort Page Design
+   Font: Poppins
+   ========================================================= */
+
+
+/* =========================================================
+   1. ROOT VARIABLES
+   ========================================================= */
+
+:root {
+  --deep: #0b3d4a;
+  --forest: #1b4332;
+  --leaf: #2d6a4f;
+  --fresh: #52b788;
+  --ocean: #1f7a99;
+  --coral: #e76f51;
+  --sun: #f4a261;
+  --gold: #e9c46a;
+  --ink: #14313a;
+  --muted: #4d6a70;
+
+  --card: #f2fbf6;
+  --card-warm: #fff4dc;
+  --card-sky: #e3f4fa;
+  --card-rose: #ffe8df;
+
+  --radius: 22px;
+  --shadow: 0 8px 22px rgba(11, 61, 74, 0.14);
+  --font: "Poppins", "Segoe UI", Arial, sans-serif;
+}
+
+
+/* =========================================================
+   2. GENERAL STYLES
+   ========================================================= */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font);
+  color: var(--ink);
+  line-height: 1.7;
+
+  background: linear-gradient(
+    180deg,
+    #d4efe3 0%,
+    #e6f3ea 45%,
+    #f8e9c8 100%
+  );
+
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Page-specific backgrounds */
+
+body.page-about {
+  background: linear-gradient(
+    180deg,
+    #cfeaf2 0%,
+    #e2f3ee 50%,
+    #f8e9c8 100%
+  );
+}
+
+body.page-resorts {
+  background: linear-gradient(
+    180deg,
+    #c9ebe0 0%,
+    #e0f2e6 50%,
+    #fbe8c9 100%
+  );
+}
+
+body.page-contact {
+  background: linear-gradient(
+    180deg,
+    #fde4d3 0%,
+    #f6efd6 45%,
+    #d3eee3 100%
+  );
+}
+
+main {
+  flex: 1;
+}
+h1, h2, h3, h4 {
+  font-family: var(--font);
+  color: var(--forest);
+  line-height: 1.25;
+}
+
+button, input, textarea {
+  font-family: var(--font);
+}
+
+a {
+  color: var(--ocean);
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+
+/* =========================================================
+   3. SKIP LINK
+   ========================================================= */
+
+.skip-link {
+  position: absolute;
+  left: -999px;
+  top: 0;
+
+  background: var(--gold);
+  color: var(--ink);
+
+  padding: .6rem 1rem;
+  z-index: 500;
+  border-radius: 0 0 12px 0;
+}
+
+.skip-link:focus {
+  left: 0;
+}
+
+
+/* =========================================================
+   4. NAVIGATION BAR
+   ========================================================= */
+
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+
+  background: linear-gradient(
+    90deg,
+    var(--forest),
+    var(--deep)
+  );
+
+  padding: .6rem 1.5rem;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, .25);
+}
+
+.nav-brand {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+
+  color: #fff;
+  text-decoration: none;
+  font-weight: 700;
+  font-size: 1.15rem;
+}
+
+.nav-brand .logo {
+  width: 54px;
+  height: 54px;
+  object-fit: cover;
+
+  border-radius: 50%;
+  border: 3px solid var(--gold);
+  background: #fff2b3;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  gap: .4rem;
+  flex-wrap: wrap;
+}
+
+.nav-link {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+
+  padding: .45rem 1rem;
+  border-radius: 999px;
+
+  transition: background .2s, color .2s;
+}
+
+.nav-link:hover {
+  background: rgba(255, 255, 255, .15);
+}
+
+.nav-link.active {
+  background: var(--gold);
+  color: var(--forest);
+  font-weight: 600;
+}
+
+.nav-link:focus-visible,
+.btn:focus-visible,
+.nav-toggle:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+
+.nav-toggle span {
+  width: 26px;
+  height: 3px;
+  background: #fff;
+  border-radius: 2px;
+}
+
+
+/* =========================================================
+   5. BUTTONS
+   ========================================================= */
+
+.btn {
+  display: inline-block;
+
+  padding: .75rem 1.7rem;
+  border-radius: 999px;
+
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+
+  border: none;
+  cursor: pointer;
+
+  transition: transform .15s, box-shadow .15s;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, .2);
+}
+
+.btn-primary {
+  background: var(--gold);
+  color: var(--forest);
+}
+
+.btn-secondary {
+  background: var(--card);
+  color: var(--forest);
+}
+
+.btn-ocean {
+  background: var(--ocean);
+  color: #fff;
+}
+
+.btn-coral {
+  background: var(--coral);
+  color: #fff;
+}
+
+
+/* =========================================================
+   6. HERO / PHOTO BANNER
+   ========================================================= */
+
+.hero,
+.photo-banner {
+  background-image:
+    linear-gradient(
+      rgba(0, 30, 28, .45),
+      rgba(0, 30, 28, .55)
+    ),
+    url("../CSS/DOi.jpg");
+
+  background-size: cover;
+  background-position: center;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+  color: #fff;
+}
+
+.hero {
+  min-height: 600px;
+  padding: 4rem 1.5rem;
+}
+
+.photo-banner {
+  min-height: 330px;
+  padding: 3rem 1.5rem;
+}
+
+.hero-box {
+  width: fit-content;
+  max-width: 860px;
+
+  background: rgba(8, 48, 44, .62);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+
+  border: 2px solid rgba(233, 196, 106, .7);
+  border-radius: 36px;
+
+  padding: 2.2rem 2.8rem;
+
+  box-shadow: 0 14px 40px rgba(0, 0, 0, .35);
+}
+
+.hero-box h1 {
+  color: #fff;
+  font-size: 2.8rem;
+  margin-bottom: .7rem;
+}
+
+.hero-box h1 span {
+  color: var(--gold);
+}
+
+.hero-box .hero-tagline {
+  color: #e9fbf1;
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+}
+
+.hero-box.compact {
+  padding: 1.8rem 2.5rem;
+}
+
+.hero-box.compact h1 {
+  font-size: 2.3rem;
+  margin-bottom: .4rem;
+}
+
+.hero-box.compact p {
+  color: #e9fbf1;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+
+/* =========================================================
+   7. PAGE BANNER
+   ========================================================= */
+
+.page-banner {
+  background: linear-gradient(
+    135deg,
+    var(--leaf),
+    var(--ocean) 60%,
+    var(--deep)
+  );
+
+  color: #fff;
+  text-align: center;
+  padding: 3.2rem 1.5rem;
+}
+
+.page-banner h1 {
+  color: #fff;
+  margin-bottom: .4rem;
+}
+
+.page-banner p {
+  max-width: 720px;
+  margin: 0 auto;
+  color: #e9fbf1;
+}
+
+
+/* =========================================================
+   8. GENERAL SECTIONS
+   ========================================================= */
+
+.section {
+  max-width: 1150px;
+  margin: 0 auto;
+  padding: 3.2rem 1.5rem;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: .6rem;
+  font-size: 2rem;
+}
+
+.section-subtitle {
+  text-align: center;
+  color: var(--muted);
+  max-width: 720px;
+  margin: 0 auto 2rem;
+}
+
+.eyebrow {
+  display: block;
+  text-align: center;
+  text-transform: uppercase;
+
+  letter-spacing: .15em;
+  font-size: .8rem;
+  font-weight: 600;
+
+  color: var(--coral);
+  margin-bottom: .3rem;
+}
+
+
+/* =========================================================
+   9. WELCOME SECTION
+   ========================================================= */
+
+.welcome {
+  background: linear-gradient(
+    135deg,
+    var(--card-warm),
+    var(--card-sky)
+  );
+
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+
+  padding: 2.4rem 2rem;
+  text-align: center;
+}
+
+.welcome p {
+  max-width: 820px;
+  margin: 0 auto 1rem;
+}
+
+
+/* =========================================================
+   10. RESORT CHIPS
+   ========================================================= */
+
+.resort-chips {
+  list-style: none;
+  display: grid;
+  gap: 1rem;
+  margin-top: 1.8rem;
+
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(220px, 1fr)
+  );
+}
+
+.resort-chips a {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  text-align: left;
+  text-decoration: none;
+  color: var(--ink);
+
+  background: var(--card);
+  border-left: 6px solid var(--fresh);
+
+  border-radius: 16px;
+  padding: .9rem 1.1rem;
+
+  box-shadow: 0 4px 12px rgba(11, 61, 74, .1);
+
+  transition: transform .15s;
+}
+
+.resort-chips a:hover {
+  transform: translateY(-3px);
+}
+
+.resort-chips li:nth-child(2n) a {
+  border-left-color: var(--ocean);
+}
+
+.resort-chips li:nth-child(3n) a {
+  border-left-color: var(--coral);
+}
+
+.resort-chips strong {
+  color: var(--forest);
+}
+
+.resort-chips small {
+  color: var(--muted);
+}
+
+
+/* =========================================================
+   11. OVERVIEW CARDS
+   ========================================================= */
+
+.overview-grid {
+  display: grid;
+
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(230px, 1fr)
+  );
+
+  gap: 1.4rem;
+}
+
+.overview-card {
+  border-radius: var(--radius);
+  padding: 1.6rem;
+
+  text-align: center;
+  box-shadow: var(--shadow);
+
+  display: flex;
+  flex-direction: column;
+  gap: .4rem;
+}
+
+.overview-card:nth-child(1) {
+  background: var(--card-sky);
+}
+
+.overview-card:nth-child(2) {
+  background: var(--card);
+}
+
+.overview-card:nth-child(3) {
+  background: var(--card-warm);
+}
+
+.overview-card:nth-child(4) {
+  background: var(--card-rose);
+}
+
+.overview-icon {
+  font-size: 2.2rem;
+}
+
+.card-link {
+  margin-top: auto;
+  font-weight: 600;
+  text-decoration: none;
+  color: var(--ocean);
+}
+
+.card-link:hover {
+  text-decoration: underline;
+}
+
+
+/* =========================================================
+   12. HIGHLIGHTS LIST
+   ========================================================= */
+
+.recommend-list {
+  list-style: none;
+  max-width: 760px;
+  margin: 0 auto;
+
+  display: grid;
+  gap: .9rem;
+}
+
+.recommend-list li {
+  background: var(--card);
+  border-left: 6px solid var(--fresh);
+
+  padding: .9rem 1.3rem;
+  border-radius: 14px;
+
+  box-shadow: 0 3px 10px rgba(11, 61, 74, .08);
+}
+
+.recommend-list li:nth-child(2) {
+  border-left-color: var(--ocean);
+}
+
+.recommend-list li:nth-child(3) {
+  border-left-color: var(--sun);
+}
+
+.recommend-list li:nth-child(4) {
+  border-left-color: var(--coral);
+}
+
+
+/* =========================================================
+   13. ABOUT PAGE
+   ========================================================= */
+
+.fact-strip {
+  display: grid;
+
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(190px, 1fr)
+  );
+
+  gap: 1rem;
+  margin-bottom: 2.4rem;
+}
+
+.fact {
+  border-radius: 18px;
+  padding: 1.2rem;
+
+  text-align: center;
+  box-shadow: var(--shadow);
+}
+
+.fact b {
+  display: block;
+  font-size: 1.5rem;
+  color: var(--forest);
+}
+
+.fact span {
+  font-size: .9rem;
+  color: var(--muted);
+}
+
+.fact:nth-child(1) {
+  background: var(--card-warm);
+}
+
+.fact:nth-child(2) {
+  background: var(--card-sky);
+}
+
+.fact:nth-child(3) {
+  background: var(--card);
+}
+
+.fact:nth-child(4) {
+  background: var(--card-rose);
+}
+
+.story-grid {
+  display: grid;
+
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(300px, 1fr)
+  );
+
+  gap: 1.5rem;
+}
+
+.story-card {
+  border-radius: var(--radius);
+  padding: 1.8rem;
+  box-shadow: var(--shadow);
+}
+
+.story-card h2 {
+  font-size: 1.35rem;
+  margin-bottom: .6rem;
+}
+
+.story-card.sky {
+  background: var(--card-sky);
+}
+
+.story-card.mint {
+  background: var(--card);
+}
+
+.story-card.sand {
+  background: var(--card-warm);
+}
+
+.story-card.rose {
+  background: var(--card-rose);
+}
+
+.story-card.wide {
+  grid-column: 1 / -1;
+}
+
+.timeline {
+  list-style: none;
+  border-left: 4px solid var(--fresh);
+
+  margin: .8rem 0 0 .6rem;
+  padding-left: 1.2rem;
+
+  display: grid;
+  gap: .9rem;
+}
+
+.timeline li {
+  position: relative;
+}
+
+.timeline li::before {
+  content: "";
+
+  position: absolute;
+  left: -1.78rem;
+  top: .5rem;
+
+  width: 14px;
+  height: 14px;
+
+  border-radius: 50%;
+  background: var(--coral);
+  border: 3px solid var(--card-warm);
+}
+
+.pill-list {
+  list-style: none;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: .6rem;
+
+  margin-top: .6rem;
+}
+
+.pill-list li {
+  background: var(--forest);
+  color: #fff;
+
+  padding: .35rem 1rem;
+  border-radius: 999px;
+  font-size: .9rem;
+}
+
+.callout {
+  margin-top: 2rem;
+  text-align: center;
+  color: #fff;
+
+  background: linear-gradient(
+    135deg,
+    var(--leaf),
+    var(--ocean)
+  );
+
+  border-radius: var(--radius);
+  padding: 2rem;
+  box-shadow: var(--shadow);
+}
+
+.callout h2 {
+  color: #fff;
+  margin-bottom: .5rem;
+}
+
+.callout p {
+  margin-bottom: 1.2rem;
+}
+
+
+/* =========================================================
+   14. RESORT PAGE – LOCATION SECTIONS
+   ========================================================= */
+
+/* Each municipality has its own section */
+
+.resort-area {
+  margin-bottom: 4.5rem;
+}
+
+.resort-area:last-child {
+  margin-bottom: 1rem;
+}
+
+/* Municipality labels */
+
+.resort-area .eyebrow {
+  color: var(--coral);
+  margin-bottom: .5rem;
+}
+
+/* Municipality titles */
+
+.resort-area .section-title {
+  font-size: 2.1rem;
+  margin-bottom: .7rem;
+}
+
+.resort-area .section-subtitle {
+  margin-bottom: 2rem;
+}
+
+/* Main resort section */
+
+#resorts {
+  padding-top: 3.5rem;
+  padding-bottom: 3.5rem;
+}
+
+/* Resort grid */
+
+.resort-grid {
+  display: grid;
+
+  grid-template-columns: repeat(
+    auto-fit,
+    minmax(280px, 1fr)
+  );
+
+  gap: 1.8rem;
+  align-items: stretch;
+}
+
+/* Resort card */
+
+.resort-card {
+  background: var(--card);
+
+  border-radius: var(--radius);
+  overflow: hidden;
+
+  box-shadow: var(--shadow);
+
+  display: flex;
+  flex-direction: column;
+
+  transition:
+    transform .25s ease,
+    box-shadow .25s ease;
+
+  scroll-margin-top: 100px;
+}
+
+/* Hover effect */
+
+.resort-card:hover {
+  transform: translateY(-6px);
+
+  box-shadow: 0 14px 28px rgba(11, 61, 74, .2);
+}
+
+.resort-card:target {
+  outline: 4px solid var(--gold);
+}
+
+/* Resort image container */
+
+.resort-media {
+  position: relative;
+
+  height: 210px;
+  overflow: hidden;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: linear-gradient(
+    135deg,
+    var(--ocean),
+    var(--fresh)
+  );
+}
+
+/* Resort images */
+
+.resort-media img {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition: transform .4s ease;
+}
+
+/* Image zoom effect */
+
+.resort-card:hover .resort-media img {
+  transform: scale(1.06);
+}
+
+/* Resort information container */
+
+.resort-body {
+  padding: 1.4rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: .7rem;
+
+  flex: 1;
+}
+
+/* Resort name */
+
+.resort-body h3 {
+  font-size: 1.2rem;
+  color: var(--forest);
+}
+
+/* Resort location */
+
+.resort-location {
+  display: inline-block;
+  align-self: flex-start;
+
+  background: var(--card-sky);
+  color: var(--deep);
+
+  font-weight: 600;
+  font-size: .82rem;
+
+  padding: .3rem .8rem;
+  border-radius: 999px;
+}
+
+/* Resort short description */
+
+.resort-body p:not(.resort-location) {
+  color: var(--muted);
+  font-size: .93rem;
+  line-height: 1.7;
+}
+
+/* Learn More button */
+
+.resort-body .btn {
+  align-self: flex-start;
+  margin-top: auto;
+
+  padding: .65rem 1.4rem;
+  font-size: .9rem;
+}
+
+
+/* =========================================================
+   15. RESORT DETAILS MODAL
+   ========================================================= */
+
+/* Modal background */
+
+.modal-overlay {
+  display: none;
+
+  position: fixed;
+  inset: 0;
+
+  z-index: 300;
+  padding: 1rem;
+
+  background: rgba(5, 30, 32, .75);
+
+  align-items: center;
+  justify-content: center;
+}
+
+/* Display modal */
+
+.modal-overlay.open {
+  display: flex;
+}
+
+/* Modal box */
+
+.modal-box {
+  position: relative;
+
+  width: 100%;
+  max-width: 600px;
+
+  max-height: 88vh;
+  overflow-y: auto;
+
+  background: linear-gradient(
+    180deg,
+    var(--card-warm),
+    var(--card)
+  );
+
+  border-radius: 26px;
+  padding: 2.5rem;
+
+  border-top: 8px solid var(--coral);
+
+  box-shadow: 0 15px 45px rgba(0, 0, 0, .3);
+
+  animation: resortModalAppear .3s ease;
+}
+
+/* Close button */
+
+.modal-close {
+  position: absolute;
+
+  top: .7rem;
+  right: 1rem;
+
+  background: none;
+  border: none;
+
+  font-size: 2rem;
+  cursor: pointer;
+
+  color: var(--forest);
+}
+
+.modal-close:hover {
+  color: var(--coral);
+}
+
+/* Modal eyebrow */
+
+.modal-box .eyebrow {
+  text-align: left;
+  color: var(--coral);
+  font-size: .75rem;
+}
+
+/* Resort name */
+
+.modal-box h2 {
+  font-size: 1.7rem;
+  color: var(--forest);
+
+  line-height: 1.35;
+  margin: .8rem 0;
+
+  padding-right: 1rem;
+}
+
+/* Resort rating */
+
+.modal-rating {
+  display: inline-block;
+
+  background: var(--card-warm);
+  color: #a66b00;
+
+  font-weight: 700;
+  font-size: 1rem;
+
+  padding: .4rem .9rem;
+  border-radius: 999px;
+
+  margin: .5rem 0 1rem;
+}
+
+/* Resort location */
+
+.modal-location {
+  color: var(--deep);
+  font-weight: 600;
+  margin-bottom: 1.3rem;
+}
+
+/* Resort description */
+
+.modal-description {
+  border-top: 1px solid rgba(11, 61, 74, .2);
+  padding-top: 1.3rem;
+}
+
+.modal-description h4 {
+  color: var(--ocean);
+  font-size: 1.1rem;
+  margin-bottom: .7rem;
+}
+
+.modal-desc {
+  color: var(--muted);
+  font-size: .95rem;
+  line-height: 1.9;
+}
+
+/* Modal animation */
+
+@keyframes resortModalAppear {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+/* =========================================================
+   16. CONTACT PAGE
+   ========================================================= */
+
+.contact-wrapper {
+  display: grid;
+
+  grid-template-columns: 1.15fr 1fr;
+
+  gap: 2rem;
+  align-items: start;
+}
+
+.contact-form {
+  background: var(--card-warm);
+
+  border-radius: var(--radius);
+  padding: 2rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+
+  box-shadow: var(--shadow);
+  border-top: 8px solid var(--sun);
+}
+
+.contact-form label {
+  font-weight: 600;
+  color: var(--forest);
+  margin-top: .4rem;
+}
+
+.contact-form input,
+.contact-form textarea {
+  padding: .75rem 1rem;
+
+  border: 2px solid #d7c9a4;
+  border-radius: 14px;
+
+  font-size: 1rem;
+
+  background: #fffaf0;
+  color: var(--ink);
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: var(--ocean);
+}
+
+.contact-form .invalid {
+  border-color: var(--coral);
+}
+
+.contact-form button {
+  align-self: flex-start;
+  margin-top: .8rem;
+}
+
+.form-status {
+  min-height: 1.4em;
+  font-weight: 600;
+  color: var(--leaf);
+}
+
+.form-status.error {
+  color: #c0392b;
+}
+
+/* Contact information */
+
+.reach-title {
+  margin-bottom: 1rem;
+}
+
+.reach-grid {
+  display: grid;
+  gap: 1rem;
+}
+
+.reach-card {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+
+  border-radius: 18px;
+  padding: 1rem 1.2rem;
+
+  box-shadow: var(--shadow);
+  color: var(--ink);
+}
+
+.reach-card .icon {
+  flex: none;
+
+  width: 52px;
+  height: 52px;
+
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 1.5rem;
+  background: rgba(255, 255, 255, .6);
+}
+
+.reach-card h3 {
+  font-size: 1rem;
+  margin-bottom: .1rem;
+}
+
+.reach-card p {
+  font-size: .93rem;
+  line-height: 1.45;
+}
+
+.reach-card.location {
+  background: linear-gradient(135deg, #bfe8d4, #d9f2e5);
+}
+
+.reach-card.capital {
+  background: linear-gradient(135deg, #ffd9a8, #ffecc9);
+}
+
+.reach-card.email {
+  background: linear-gradient(135deg, #ffc9b8, #ffe4da);
+}
+
+.reach-card.season {
+  background: linear-gradient(135deg, #bfe3f2, #dff2fa);
+}
+
+
+/* =========================================================
+   17. SOCIAL LINKS
+   ========================================================= */
+
+.social-links {
+  list-style: none;
+
+  display: flex;
+  gap: .8rem;
+  flex-wrap: wrap;
+
+  margin-top: 1.2rem;
+}
+
+.social-links a {
+  display: inline-block;
+
+  text-decoration: none;
+  font-weight: 600;
+  color: #fff;
+
+  padding: .5rem 1.3rem;
+  border-radius: 999px;
+
+  transition: transform .15s;
+}
+
+.social-links a:hover {
+  transform: translateY(-2px);
+}
+
+.social-links li:nth-child(1) a {
+  background: #2d6ac4;
+}
+
+.social-links li:nth-child(2) a {
+  background: #d6457f;
+}
+
+.social-links li:nth-child(3) a {
+  background: #d63a30;
+}
+
+
+/* =========================================================
+   18. FOOTER
+   ========================================================= */
+
+.site-footer {
+  text-align: center;
+
+  padding: 1.4rem;
+  color: #fff;
+
+  background: linear-gradient(
+    90deg,
+    var(--forest),
+    var(--deep)
+  );
+}
+
+.site-footer img {
+  display: inline-block;
+
+  width: 36px;
+  height: 36px;
+
+  border-radius: 50%;
+  vertical-align: middle;
+
+  margin-right: .5rem;
+  border: 2px solid var(--gold);
+}
+
+
+/* =========================================================
+   19. RESPONSIVE DESIGN – TABLETS
+   ========================================================= */
+
+@media (max-width: 800px) {
+
+  .contact-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+
+/* =========================================================
+   20. RESPONSIVE DESIGN – MOBILE
+   ========================================================= */
+
+@media (max-width: 760px) {
+
+  /* Navigation */
+
+  .nav-toggle {
+    display: flex;
+  }
+
+  .nav-links {
+    display: none;
+
+    flex-direction: column;
+    width: 100%;
+
+    padding: .8rem 0 .4rem;
+    gap: .2rem;
+  }
+
+  .nav-links.open {
+    display: flex;
+  }
+
+  .nav-brand {
+    font-size: 1rem;
+  }
+
+  .nav-brand .logo {
+    width: 44px;
+    height: 44px;
+  }
+
+  /* Hero */
+
+  .hero {
+    min-height: 520px;
+    padding: 2.5rem 1rem;
+  }
+
+  .hero-box,
+  .hero-box.compact {
+    padding: 1.5rem 1.3rem;
+    border-radius: 28px;
+  }
+
+  .hero-box h1 {
+    font-size: 1.9rem;
+  }
+
+  .hero-box.compact h1 {
+    font-size: 1.7rem;
+  }
+
+  /* General sections */
+
+  .section {
+    padding: 2.4rem 1.1rem;
+  }
+
+  /* Resort sections */
+
+  .resort-area {
+    margin-bottom: 3.5rem;
+  }
+
+  .resort-area .section-title {
+    font-size: 1.7rem;
+  }
+
+  .resort-grid {
+    grid-template-columns: 1fr;
+    gap: 1.4rem;
+  }
+
+  .resort-media {
+    height: 220px;
+  }
+
+  /* Resort modal */
+
+  .modal-box {
+    padding: 2rem 1.4rem;
+    border-radius: 20px;
+  }
+
+  .modal-box h2 {
+    font-size: 1.4rem;
+  }
+
+  .modal-desc {
+    font-size: .9rem;
+  }
+
+}
+
+
+/* =========================================================
+   END OF MAIN STYLESHEET
+   ========================================================= */
